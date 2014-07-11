@@ -79,7 +79,20 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Rele 4" />
+
+            <ToggleButton
+                android:id="@+id/toggleButton1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="ToggleButton" />
+
         </LinearLayout>
+
+        <SeekBar
+            android:id="@+id/seekBar1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
     </LinearLayout>
 
 </FrameLayout>
