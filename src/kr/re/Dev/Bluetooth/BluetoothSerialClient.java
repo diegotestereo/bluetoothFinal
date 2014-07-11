@@ -23,12 +23,7 @@ import android.os.Looper;
 
 /**
  * BluetoothSerialClient 
- * 블루투스를 이용한 시리얼 통신을 간편하게~ :)
- * 
- * www.dev.re.kr 
- * @author ice3x2@gmail.com / Sungbeom Hong.
- *
- */
+  */
 public class BluetoothSerialClient {
 	
 	 

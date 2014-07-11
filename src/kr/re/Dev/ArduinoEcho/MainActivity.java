@@ -139,15 +139,16 @@ public class MainActivity extends Activity {
 		btn_relay4.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				sendStringData(mEditTextInput.getText().toString());
+				sendStringData(R4);
 				mEditTextInput.setText("");
 			}
 		});
+		
 		mButtonSend = (Button) findViewById(R.id.buttonSend);
 		mButtonSend.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				sendStringData(R4);
+				sendStringData(mEditTextInput.getText().toString());
 				mEditTextInput.setText("");
 			}
 		});
@@ -170,9 +171,9 @@ public class MainActivity extends Activity {
 			}
 		});
 		AlertDialog.Builder builder = new AlertDialog.Builder(this);
-		builder.setTitle("Select bluetooth device");
+		builder.setTitle("Seleccionar Dispositivo Bluetooth");
 		builder.setView(listView);
-		builder.setPositiveButton("Scan",
+		builder.setPositiveButton("Escaner",
 		 new DialogInterface.OnClickListener() {
 		  public void onClick(DialogInterface dialog, int id) {
 			  scanDevices();
@@ -230,10 +231,10 @@ public class MainActivity extends Activity {
 			String message ="";
 			@Override
 			public void onStart() {
-				Log.d("Test", "Scan Start.");
+				Log.d("prueba", "Escaneo comienza.");
 				mLoadingDialog.show();
 				message = "Scanning....";
-				mLoadingDialog.setMessage("Scanning....");
+				mLoadingDialog.setMessage("Escanenado....");
 				mLoadingDialog.setCancelable(true);
 				mLoadingDialog.setCanceledOnTouchOutside(false);
 				mLoadingDialog.setOnCancelListener(new OnCancelListener() {
@@ -266,7 +267,7 @@ public class MainActivity extends Activity {
 	
 	
 	private void connect(BluetoothDevice device) {
-		mLoadingDialog.setMessage("Connecting....");
+		mLoadingDialog.setMessage("Conectando....");
 		mLoadingDialog.setCancelable(false);
 		mLoadingDialog.show();
 		BluetoothSerialClient btSet =  mClient;
@@ -279,7 +280,7 @@ public class MainActivity extends Activity {
 		@Override
 		public void onError(Exception e) {
 			mLoadingDialog.cancel();
-			addText("Messgae : Connection error - " +  e.toString() + "\n");
+			addText("Mensaje : no se encuentra el dispositivo  !!! \n");
 			mMenu.getItem(0).setTitle(R.string.action_connect);
 		}
 		
@@ -287,7 +288,7 @@ public class MainActivity extends Activity {
 		public void onDisconnected() {
 			mMenu.getItem(0).setTitle(R.string.action_connect);
 			mLoadingDialog.cancel();
-			addText("Messgae : Disconnected.\n");
+			addText("Mensaje : Desconectado.\n");
 		}
 		@Override
 		public void onData(byte[] buffer, int length) {
@@ -307,7 +308,7 @@ public class MainActivity extends Activity {
 		
 		@Override
 		public void onConnected() {
-			addText("Messgae : Connected. " + mClient.getConnectedDevice().getName() + "\n");
+			addText("Mensaje : Conectado. " + mClient.getConnectedDevice().getName() + "\n");
 			mLoadingDialog.cancel();
 			mMenu.getItem(0).setTitle(R.string.action_disconnect);
 		}
@@ -317,7 +318,7 @@ public class MainActivity extends Activity {
 		data += '\0';
 		byte[] buffer = data.getBytes();
 		if(mBTHandler.write(buffer)) {
-			addText("Me : " + data + '\n');
+			addText("Android : " + data + '\n');
 		}
 	}
 	
